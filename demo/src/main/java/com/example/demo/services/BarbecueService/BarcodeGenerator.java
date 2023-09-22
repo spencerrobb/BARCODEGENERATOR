@@ -3,7 +3,7 @@ package com.example.demo.services.BarbecueService;
 import java.awt.image.BufferedImage;
 
 
-public interface BarcecueBarcodeGenerator {
+public interface BarcodeGenerator {
 
     BufferedImage generateEAN13BarcodeImage(String barcode) throws Exception;
 }
