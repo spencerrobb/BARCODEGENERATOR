@@ -14,6 +14,7 @@ import java.awt.image.BufferedImage;
 @RestController
 @AllArgsConstructor
 @NoArgsConstructor
+@RequestMapping("/barcodes")
 public class BarcodesController {
 
 

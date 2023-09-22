@@ -1,11 +1,13 @@
 package com.example.demo.services.BarbecueService;
 
 import net.glxn.qrgen.javase.QRCode;
+import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+
 
 public class QRGenBarcodeGenerator {
 
