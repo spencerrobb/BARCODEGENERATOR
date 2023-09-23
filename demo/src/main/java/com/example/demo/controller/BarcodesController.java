@@ -17,7 +17,6 @@ import java.awt.image.BufferedImage;
 @RequestMapping("/barcodes")
 public class BarcodesController {
 
-
     @Autowired
     private BarbecueBarcodeGenerator BarbecueBarcodeGenerator;
 
