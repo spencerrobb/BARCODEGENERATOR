@@ -11,6 +11,7 @@ import org.springframework.http.converter.BufferedImageHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 
 import java.awt.image.BufferedImage;
+import java.util.Date;
 
 @SpringBootApplication
 public class DemoApplication {
@@ -19,7 +20,7 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 
 		System.out.println("Hellow World!");
-		System.out.println("Sept 24");
+		System.out.println(new Date());
 		System.out.println("Rebate");
 	}
 
