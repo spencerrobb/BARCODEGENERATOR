@@ -20,6 +20,7 @@ public class DemoApplication {
 
 		System.out.println("Hellow World!");
 		System.out.println("Sept 24");
+		System.out.println("Rebate");
 	}
 
 	@Bean
