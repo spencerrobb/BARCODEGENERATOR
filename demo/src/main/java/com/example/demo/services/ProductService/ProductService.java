@@ -40,7 +40,6 @@ public class ProductService {
 
         Product product = productRepository.findByBarid(barid);
         System.out.println(product.getBarid() + " BARID2");
-
         int currentItemCount = product.getItemCount();
         int newCount = currentItemCount + itemCount;
         product.setItemCount(newCount);
