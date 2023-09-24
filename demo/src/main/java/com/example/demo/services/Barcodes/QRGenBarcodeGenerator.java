@@ -7,7 +7,6 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
-
 public class QRGenBarcodeGenerator {
 
     public static BufferedImage generateQRCodeImage(String barcodeText) throws Exception {

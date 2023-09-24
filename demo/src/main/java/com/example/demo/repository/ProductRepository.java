@@ -14,4 +14,5 @@ public interface ProductRepository  extends JpaRepository<Product,Long> {
     nativeQuery = true)
     public Integer countById(String barid);
 
+
 }
