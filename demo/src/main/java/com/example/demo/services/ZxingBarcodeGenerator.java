@@ -1,4 +1,4 @@
-package com.example.demo.services.BarbecueService;
+package com.example.demo.services;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.client.j2se.MatrixToImageWriter;

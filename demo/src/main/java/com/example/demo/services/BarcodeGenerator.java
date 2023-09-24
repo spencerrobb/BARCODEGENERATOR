@@ -1,4 +1,4 @@
-package com.example.demo.services.BarbecueService;
+package com.example.demo.services;
 
 import java.awt.image.BufferedImage;
 

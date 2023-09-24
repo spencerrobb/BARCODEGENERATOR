@@ -1,4 +1,4 @@
-package com.example.demo.services.BarbecueService;
+package com.example.demo.services;
 
 import net.sourceforge.barbecue.Barcode;
 import net.sourceforge.barbecue.BarcodeFactory;

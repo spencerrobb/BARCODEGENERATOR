@@ -1,4 +1,4 @@
-package com.example.demo.services.BarbecueService;
+package com.example.demo.services;
 
 import org.krysalis.barcode4j.impl.upcean.EAN13Bean;
 import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;

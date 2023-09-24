@@ -1,4 +1,4 @@
-package com.example.demo.services.BarbecueService;
+package com.example.demo.services;
 
 import net.glxn.qrgen.javase.QRCode;
 import org.springframework.stereotype.Service;
