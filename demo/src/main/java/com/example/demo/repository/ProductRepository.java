@@ -12,6 +12,6 @@ public interface ProductRepository  extends JpaRepository<Product,Long> {
     @Query(
             value = "Select count(bar_id) from tbl_product where bar_id = ?1",
     nativeQuery = true)
-    public String countById(String barid);
+    public Integer countById(String barid);
 
 }

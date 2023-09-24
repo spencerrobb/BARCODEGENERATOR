@@ -10,16 +10,7 @@ import java.awt.image.BufferedImage;
 
 @Service
 public class BarcodeGeneratorImpl implements BarcodeGenerator {
-
     private static final Font BARCODE_TEXT_FONT = new Font("Courier", Font.PLAIN, 20);
-
-//    public BufferedImage generateEAN13BarcodeImage(String barcodeText) throws Exception {
-//        Barcode barcode = BarcodeFactory.createEAN13(barcodeText);
-//        barcode.setFont(BARCODE_TEXT_FONT);
-//
-//        return BarcodeImageHandler.getImage(barcode);
-//    }
-
 
     public BufferedImage generateEAN13BarcodeImage(String barcodeText) {
         EAN13Bean barcodeGenerator = new EAN13Bean();

@@ -5,6 +5,8 @@ import com.example.demo.services.ProductService.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/products")
 public class ProductController {
@@ -25,6 +27,16 @@ public class ProductController {
     @PostMapping("/addStock")
     public Product addStock(@RequestParam String barid, @RequestParam int itemCount) throws Exception{
         return productService.addStock(barid, itemCount);
+    }
+
+    @GetMapping("/viewProduct/{barid}")
+    public Product getProduct(@PathVariable String barid) throws Exception {
+        return productService.viewProduct(barid);
+    }
+
+    @GetMapping("/getListOfProducts")
+    public List<Product> getAll() throws Exception {
+        return productService.getAllProduct();
     }
 
 }
