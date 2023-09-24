@@ -23,7 +23,7 @@ public class ProductController {
     }
 
     @PostMapping("/addStock")
-    public Product addStock(@RequestParam String barid,@RequestParam int itemCount) throws Exception{
+    public Product addStock(@RequestParam String barid, @RequestParam int itemCount) throws Exception{
         return productService.addStock(barid, itemCount);
     }
 

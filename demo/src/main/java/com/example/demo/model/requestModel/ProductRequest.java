@@ -20,4 +20,5 @@ public class ProductRequest {
     int itemCount;
     double productPrice;
 
+
 }

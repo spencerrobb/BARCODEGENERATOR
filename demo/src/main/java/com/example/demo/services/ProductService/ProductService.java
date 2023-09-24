@@ -38,6 +38,11 @@ public class ProductService {
 
     public Product addStock(String barid, int itemCount) {
 
+        String exists  = productRepository.countById(barid);
+        System.out.println(exists + "EXISTS") ;
+        if(!exists.equals(null)){
+            System.out.println();
+        }
         Product product = productRepository.findByBarid(barid);
         System.out.println(product.getBarid() + " BARID2");
         int currentItemCount = product.getItemCount();

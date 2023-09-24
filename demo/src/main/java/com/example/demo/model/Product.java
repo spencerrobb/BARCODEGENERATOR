@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 
+import com.example.demo.model.requestModel.ProductRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,7 +21,6 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
-
     @Column(name = "Prod_Name")
     String productName;
     @Column(name="Bar_Id")
@@ -33,4 +33,28 @@ public class Product {
     int itemCount;
     @Column(name="Prod_Price")
     double productPrice;
+
+    public Product(ProductRequest productRequest){
+        if( productRequest.getId() != null){
+            setId(productRequest.getId());
+        }
+        if( productRequest.getProductName() != null){
+            setProductName(productRequest.getProductName());
+        }
+        if( productRequest.getBarid() != null){
+            setBarid(productRequest.getBarid());
+        }
+        if( productRequest.getProductDesc() != null){
+            setProductDesc(productRequest.getProductDesc());
+        }
+        if( productRequest.getProductMedicalName() != null){
+            setProductMedicalName(productRequest.getProductMedicalName());
+        }
+        if( productRequest.getItemCount() != 0){
+            setItemCount(productRequest.getItemCount());
+        }
+        if( productRequest.getProductPrice() != 0){
+            setProductPrice(productRequest.getProductPrice());
+        }
+    }
 }
