@@ -1,9 +1,9 @@
 package com.example.demo;
 
-import com.example.demo.services.BarbecueBarcodeGenerator;
-import com.example.demo.services.Barcode4jBarcodeGenerator;
-import com.example.demo.services.QRGenBarcodeGenerator;
-import com.example.demo.services.ZxingBarcodeGenerator;
+import com.example.demo.services.Barcodes.BarbecueBarcodeGenerator;
+import com.example.demo.services.Barcodes.Barcode4jBarcodeGenerator;
+import com.example.demo.services.Barcodes.QRGenBarcodeGenerator;
+import com.example.demo.services.Barcodes.ZxingBarcodeGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;

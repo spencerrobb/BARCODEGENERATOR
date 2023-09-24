@@ -1,4 +1,4 @@
-package com.example.demo.services;
+package com.example.demo.services.Barcodes;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.client.j2se.MatrixToImageWriter;

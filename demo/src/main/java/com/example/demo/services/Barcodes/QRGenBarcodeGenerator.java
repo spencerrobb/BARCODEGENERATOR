@@ -1,7 +1,6 @@
-package com.example.demo.services;
+package com.example.demo.services.Barcodes;
 
 import net.glxn.qrgen.javase.QRCode;
-import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

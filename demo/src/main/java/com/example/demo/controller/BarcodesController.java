@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.services.QRGenBarcodeGenerator;
+import com.example.demo.services.Barcodes.QRGenBarcodeGenerator;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +18,16 @@ import java.awt.image.BufferedImage;
 public class BarcodesController {
 
     @Autowired
-    private com.example.demo.services.BarbecueBarcodeGenerator BarbecueBarcodeGenerator;
+    private com.example.demo.services.Barcodes.BarbecueBarcodeGenerator BarbecueBarcodeGenerator;
 
     @Autowired
-    private com.example.demo.services.Barcode4jBarcodeGenerator Barcode4jBarcodeGenerator;
+    private com.example.demo.services.Barcodes.Barcode4jBarcodeGenerator Barcode4jBarcodeGenerator;
 
     @Autowired
     private QRGenBarcodeGenerator QrGenBarcodeGenerator;
 
     @Autowired
-    private com.example.demo.services.ZxingBarcodeGenerator ZxingBarcodeGenerator;
+    private com.example.demo.services.Barcodes.ZxingBarcodeGenerator ZxingBarcodeGenerator;
 
     @GetMapping("/hello")
     public String helloWorld(){

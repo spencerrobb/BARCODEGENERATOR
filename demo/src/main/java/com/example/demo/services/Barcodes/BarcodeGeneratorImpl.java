@@ -1,5 +1,6 @@
-package com.example.demo.services;
+package com.example.demo.services.Barcodes;
 
+import com.example.demo.services.Barcodes.BarcodeGenerator;
 import org.krysalis.barcode4j.impl.upcean.EAN13Bean;
 import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
 import org.springframework.stereotype.Service;
