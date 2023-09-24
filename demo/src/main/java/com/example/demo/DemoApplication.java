@@ -1,12 +1,9 @@
 package com.example.demo;
 
-import com.example.demo.services.BarbecueService.BarbecueBarcodeGenerator;
-import com.example.demo.services.BarbecueService.Barcode4jBarcodeGenerator;
-import com.example.demo.services.BarbecueService.QRGenBarcodeGenerator;
-import com.example.demo.services.BarbecueService.ZxingBarcodeGenerator;
-import net.sourceforge.barbecue.Barcode;
-import net.sourceforge.barbecue.BarcodeFactory;
-import net.sourceforge.barbecue.BarcodeImageHandler;
+import com.example.demo.services.BarbecueBarcodeGenerator;
+import com.example.demo.services.Barcode4jBarcodeGenerator;
+import com.example.demo.services.QRGenBarcodeGenerator;
+import com.example.demo.services.ZxingBarcodeGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
