@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.services.BarbecueService.*;
 import com.example.demo.services.QRGenBarcodeGenerator;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

@@ -48,5 +48,4 @@ public class DemoApplication {
 		return new ZxingBarcodeGenerator();
 	}
 
-
 }
