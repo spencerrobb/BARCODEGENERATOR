@@ -22,6 +22,7 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 
 		System.out.println("Hellow World!");
+		System.out.println("Sept 24");
 	}
 
 	@Bean
