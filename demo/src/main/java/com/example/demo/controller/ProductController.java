@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Product;
+import com.example.demo.entity.Product;
+import com.example.demo.model.requestModel.PurchaseRequest;
 import com.example.demo.services.ProductService.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,9 +20,14 @@ public class ProductController {
         return productService.save(newProduct);
     }
 
+//    @PostMapping("/buy")
+//    public Product buyProduct(@RequestParam String barid, @RequestParam int itemCount) throws Exception{
+//        return productService.buy(barid, itemCount);
+//    }
+
     @PostMapping("/buy")
-    public Product buyProduct(@RequestParam String barid,@RequestParam int itemCount) throws Exception{
-        return productService.buy(barid, itemCount);
+    public Product buyProduct(@RequestBody PurchaseRequest purchaseRequest) throws Exception{
+        return productService.buy(purchaseRequest);
     }
 
     @PostMapping("/addStock")

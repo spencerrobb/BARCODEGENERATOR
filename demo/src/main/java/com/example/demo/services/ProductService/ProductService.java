@@ -1,8 +1,10 @@
 package com.example.demo.services.ProductService;
 
 import com.example.demo.exception.ProductNotFoundException;
-import com.example.demo.model.Product;
+import com.example.demo.entity.Product;
+import com.example.demo.model.requestModel.PurchaseRequest;
 import com.example.demo.repository.ProductRepository;
+import com.example.demo.services.PurchaseService.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,43 +16,54 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private PurchaseService purchaseService;
+
     public Product save(Product newProduct) {
         return productRepository.save(newProduct);
     }
 
-    public Product buy(String barid, int itemCount)  throws Exception{
+    public Product buy(PurchaseRequest purchaseRequest)  throws Exception{
 
-        Product product = productRepository.findByBarid(barid);
-        System.out.println(product.getBarid() + " BARID2");
+        Product product = productRepository.findByBarid(purchaseRequest.getBarid());
+
+        int requestQuantityPurchase = purchaseRequest.getQuantityPurchase();
         int newCount = 0;
         int currentItemCount = product.getItemCount();
-        if(currentItemCount <  itemCount){
-            throw new Exception();
+
+        if(currentItemCount <  requestQuantityPurchase){
+            throw new Exception("Oops Out Of Stock");
         } else {
-            newCount = currentItemCount - itemCount;
+            newCount = currentItemCount - requestQuantityPurchase;
         }
+
         product.setItemCount(newCount);
         Product updatedProduct = product;
+
+        purchaseService.saveTransactionDetails(updatedProduct, requestQuantityPurchase);
 
         return productRepository.save(updatedProduct);
     }
 
     public Product addStock(String barid, int itemCount) throws ProductNotFoundException,Exception {
-
         Product updatedProduct = null;
-        Integer count  = productRepository.countById(barid);
-        System.out.println(count + "EXISTS") ;
-        if(count == 0){
-            System.out.println("No Update Were Made");
-            throw new ProductNotFoundException("Product Doesnt Exist!");
-        } else {
-            System.out.println("MAY LAMAN SYA");
-            Product product = productRepository.findByBarid(barid);
-            System.out.println(product.getBarid() + " BARID2");
-            int currentItemCount = product.getItemCount();
-            int newCount = currentItemCount + itemCount;
-            product.setItemCount(newCount);
-            updatedProduct = product;
+        try{
+            Integer count  = productRepository.countById(barid);
+            System.out.println(count + "EXISTS") ;
+            if(count == 0){
+                System.out.println("No Update Were Made");
+                throw new ProductNotFoundException("Product Doesnt Exist!");
+            } else {
+                System.out.println("MAY LAMAN SYA");
+                Product product = productRepository.findByBarid(barid);
+                System.out.println(product.getBarid() + " BARID2");
+                int currentItemCount = product.getItemCount();
+                int newCount = currentItemCount + itemCount;
+                product.setItemCount(newCount);
+                updatedProduct = product;
+            }
+        } catch(Exception e){
+            return updatedProduct;
         }
         return productRepository.save(updatedProduct);
     }
@@ -76,4 +89,9 @@ public class ProductService {
         //insert code here
 
     }
+
+    public Product checkProductByBardIdIfExists(String barid){
+        return productRepository.findByBarid(barid);
+    }
+
 }
