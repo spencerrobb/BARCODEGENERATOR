@@ -28,6 +28,8 @@ public class PurchaseHistory {
     int quantityPurchase;
     @Column(name="updatedQuantity")
     int updatedCount;
+    @Column(name="User_Id")
+    String userId;
 //    Product product;
 
     public PurchaseHistory(Product product){
