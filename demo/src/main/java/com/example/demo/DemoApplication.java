@@ -1,9 +1,9 @@
 package com.example.demo;
 
-import com.example.demo.services.Barcodes.BarbecueBarcodeGenerator;
-import com.example.demo.services.Barcodes.Barcode4jBarcodeGenerator;
-import com.example.demo.services.Barcodes.QRGenBarcodeGenerator;
-import com.example.demo.services.Barcodes.ZxingBarcodeGenerator;
+import com.example.demo.services.BarcodesService.BarbecueBarcodeGenerator;
+import com.example.demo.services.BarcodesService.Barcode4jBarcodeGenerator;
+import com.example.demo.services.BarcodesService.QRGenBarcodeGenerator;
+import com.example.demo.services.BarcodesService.ZxingBarcodeGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +19,7 @@ public class DemoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 
-		System.out.println("Hellow World!");
+		System.out.println("Hello World!");
 		System.out.println(new Date());
 		System.out.println("Rebate");
 	}

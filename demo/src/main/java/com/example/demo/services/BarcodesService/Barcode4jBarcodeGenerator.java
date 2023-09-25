@@ -1,4 +1,4 @@
-package com.example.demo.services.Barcodes;
+package com.example.demo.services.BarcodesService;
 
 import org.krysalis.barcode4j.impl.code128.Code128Bean;
 import org.krysalis.barcode4j.impl.pdf417.PDF417Bean;

@@ -1,4 +1,4 @@
-package com.example.demo.services.Barcodes;
+package com.example.demo.services.BarcodesService;
 
 import net.glxn.qrgen.javase.QRCode;
 

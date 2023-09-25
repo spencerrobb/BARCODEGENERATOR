@@ -1,4 +1,4 @@
-package com.example.demo.services.Scan;
+package com.example.demo.services.ScanService;
 
 import com.example.demo.entity.ScannedProd;
 import com.example.demo.entity.User;

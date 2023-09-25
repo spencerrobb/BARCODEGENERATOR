@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.services.Scan.ScanService;
+import com.example.demo.services.ScanService.ScanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
