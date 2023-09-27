@@ -48,7 +48,7 @@ public class ProductService {
     public Product addStock(String barid, int itemCount) throws ProductNotFoundException,Exception {
         Product updatedProduct = null;
         try{
-            Integer count  = productRepository.countById(barid);
+            Integer count  = productRepository.countByBarId(barid);
             System.out.println(count + "EXISTS") ;
             if(count == 0){
                 System.out.println("No Update Were Made");
@@ -71,7 +71,7 @@ public class ProductService {
     public Product viewProduct(String barid) throws ProductNotFoundException ,Exception{
 
         Product viewProduct = null;
-        Integer count  = productRepository.countById(barid);
+        Integer count  = productRepository.countByBarId(barid);
         if(count == 0){
             throw new ProductNotFoundException("Product Doesnt Exist!");
         } else {
