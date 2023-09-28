@@ -39,5 +39,4 @@ public class BarbecueBarcodeGenerator {
 
         return BarcodeImageHandler.getImage(barcode);
     }
-
 }

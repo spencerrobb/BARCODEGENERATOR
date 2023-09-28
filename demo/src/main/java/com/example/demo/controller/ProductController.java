@@ -27,7 +27,7 @@ public class ProductController {
 
     @PostMapping("/buy")
     public Product buyProduct(@RequestBody PurchaseRequest purchaseRequest) throws Exception{
-        return productService.buy(purchaseRequest);
+        return productService.purchase(purchaseRequest);
     }
 
     @PostMapping("/addStock")

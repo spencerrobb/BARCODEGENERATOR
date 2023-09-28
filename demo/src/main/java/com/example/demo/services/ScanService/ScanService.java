@@ -34,13 +34,13 @@ public class ScanService {
                 newScannedProd.setIsScanned(1);
                 scanRepository.save(newScannedProd);
 
-                User loggedInUser =userRepository.findByUserId(userid);
+                User loggedInUser = userRepository.findByUserId(userid);
                 double points = loggedInUser.getPointsEarned();
                 points++;
                 loggedInUser.setPointsEarned(points);
                 userRepository.save(loggedInUser);
 
-                response =  "A point has been added to user: "+userid;
+                response =  "A point has been added to user: "+ userid;
             } else {
                 response =  "Already Scanned";
             }

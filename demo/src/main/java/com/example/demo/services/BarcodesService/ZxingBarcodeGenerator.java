@@ -47,5 +47,4 @@ public class ZxingBarcodeGenerator {
 
         return MatrixToImageWriter.toBufferedImage(bitMatrix);
     }
-
 }

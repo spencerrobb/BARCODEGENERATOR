@@ -23,7 +23,7 @@ public class ProductService {
         return productRepository.save(newProduct);
     }
 
-    public Product buy(PurchaseRequest purchaseRequest)  throws Exception{
+    public Product purchase(PurchaseRequest purchaseRequest)  throws Exception{
 
         Product product = productRepository.findByBarid(purchaseRequest.getBarid());
 
@@ -84,10 +84,17 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public void validate(Product product){
-
-        //insert code here
-
+    public String validate(Product product){
+        String result = null;
+       if(product!=null){
+           Product checkIfExisting = productRepository.findByBarid(product.getBarid());
+           if(product==null){
+               productRepository.save(product);
+           } else{
+               result = "Product Already Exists!";
+           }
+       }
+       return result;
     }
 
     public Product checkProductByBardIdIfExists(String barid){
