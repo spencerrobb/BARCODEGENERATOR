@@ -20,9 +20,7 @@ public class ProductService {
     private PurchaseService purchaseService;
 
     public Product registerProduct(Product newProduct) {
-
         Product newRegisteredProduct = null;
-
         Product checkIfExisting = productRepository.findByBarid(newProduct.getBarid());
         if (checkIfExisting!=null){
             return newRegisteredProduct=null;
@@ -33,7 +31,6 @@ public class ProductService {
     }
 
     public Product purchase(PurchaseRequest purchaseRequest)  throws Exception{
-
         Product product = productRepository.findByBarid(purchaseRequest.getBarid());
         int requestQuantityPurchase = purchaseRequest.getQuantityPurchase();
         int newCount = 0;
@@ -46,7 +43,6 @@ public class ProductService {
         product.setItemCount(newCount);
         Product updatedProduct = product;
         purchaseService.saveTransactionDetails(updatedProduct, requestQuantityPurchase);
-
         return productRepository.save(updatedProduct);
     }
 
@@ -74,7 +70,6 @@ public class ProductService {
     }
 
     public Product viewProduct(String barid) throws ProductNotFoundException, Exception{
-
         Product viewProduct = null;
         Integer count  = productRepository.countByBarId(barid);
         if(count == 0){
