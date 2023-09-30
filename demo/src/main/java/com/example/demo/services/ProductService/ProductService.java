@@ -55,7 +55,6 @@ public class ProductService {
                 System.out.println("No Update Were Made");
                 throw new ProductNotFoundException("Product Doesnt Exist!");
             } else {
-                System.out.println("MAY LAMAN SYA");
                 Product product = productRepository.findByBarid(barid);
                 System.out.println(product.getBarid() + " BARID2");
                 int currentItemCount = product.getItemCount();
