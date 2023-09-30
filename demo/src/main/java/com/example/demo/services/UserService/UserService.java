@@ -14,4 +14,8 @@ public class UserService {
     public User findByUserId(String userId) {
         return userRepository.findByUserId(userId);
     }
+
+    public void Login(){
+
+    };
 }
