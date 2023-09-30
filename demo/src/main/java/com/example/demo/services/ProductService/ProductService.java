@@ -19,33 +19,38 @@ public class ProductService {
     @Autowired
     private PurchaseService purchaseService;
 
-    public Product save(Product newProduct) {
-        return productRepository.save(newProduct);
+    public Product registerProduct(Product newProduct) {
+
+        Product newRegisteredProduct = null;
+
+        Product checkIfExisting = productRepository.findByBarid(newProduct.getBarid());
+        if (checkIfExisting!=null){
+            return newRegisteredProduct=null;
+        } else if(checkIfExisting==null){
+            newRegisteredProduct = productRepository.save(newProduct);
+        }
+        return newRegisteredProduct;
     }
 
     public Product purchase(PurchaseRequest purchaseRequest)  throws Exception{
 
         Product product = productRepository.findByBarid(purchaseRequest.getBarid());
-
         int requestQuantityPurchase = purchaseRequest.getQuantityPurchase();
         int newCount = 0;
         int currentItemCount = product.getItemCount();
-
         if(currentItemCount <  requestQuantityPurchase){
             throw new Exception("Oops Out Of Stock");
         } else {
             newCount = currentItemCount - requestQuantityPurchase;
         }
-
         product.setItemCount(newCount);
         Product updatedProduct = product;
-
         purchaseService.saveTransactionDetails(updatedProduct, requestQuantityPurchase);
 
         return productRepository.save(updatedProduct);
     }
 
-    public Product addStock(String barid, int itemCount) throws ProductNotFoundException,Exception {
+    public Product addStock(String barid, int itemCount) throws ProductNotFoundException, Exception {
         Product updatedProduct = null;
         try{
             Integer count  = productRepository.countByBarId(barid);
@@ -68,7 +73,7 @@ public class ProductService {
         return productRepository.save(updatedProduct);
     }
 
-    public Product viewProduct(String barid) throws ProductNotFoundException ,Exception{
+    public Product viewProduct(String barid) throws ProductNotFoundException, Exception{
 
         Product viewProduct = null;
         Integer count  = productRepository.countByBarId(barid);
@@ -82,19 +87,6 @@ public class ProductService {
 
     public List<Product> getAllProduct(){
         return productRepository.findAll();
-    }
-
-    public String validate(Product product){
-        String result = null;
-       if(product!=null){
-           Product checkIfExisting = productRepository.findByBarid(product.getBarid());
-           if(product==null){
-               productRepository.save(product);
-           } else{
-               result = "Product Already Exists!";
-           }
-       }
-       return result;
     }
 
     public Product checkProductByBardIdIfExists(String barid){
