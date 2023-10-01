@@ -31,4 +31,6 @@ public class User {
     String password;
     @Column(name = "Points_Earned")
     double pointsEarned;
+    @Column(name= "Role")
+    String role;
 }
