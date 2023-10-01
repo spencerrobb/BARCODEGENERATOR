@@ -27,7 +27,7 @@ public class ScanService {
         int checkExistingProduct = productRepository.countByBarId(removeCheckSum);
         if(checkExistingProduct!=0){
             int scanStatus = scanRepository.checkIfAlreadyScanned(barid,userid);
-            if(scanStatus==0){
+            if(scanStatus==0){ //check if product is already scanned
                 ScannedProd newScannedProd = new ScannedProd();
                 newScannedProd.setBarid(barid);
                 newScannedProd.setUserid(userid);
