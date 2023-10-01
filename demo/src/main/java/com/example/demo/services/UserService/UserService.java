@@ -15,7 +15,14 @@ public class UserService {
         return userRepository.findByUserId(userId);
     }
 
-    public void Login(){
-
+    public boolean authenticateUser(String userid, String password){
+        User checkUser = userRepository.authenticateUser(userid, password);
+        if(checkUser!=null){
+            return false;
+        } else {
+            return true;
+        }
     };
+
+
 }
