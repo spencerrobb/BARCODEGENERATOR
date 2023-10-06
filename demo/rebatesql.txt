@@ -81,3 +81,14 @@ select * from tbl_product tblp left outer join tbl_scan_products tbls on tblp.ba
 -- reset records
 update tbl_users set points_earned =0;
 truncate table tbl_scan_products;
+
+SELECT * FROM rebatesystem.tbl_users;
+insert into tbl_users values ('spencerrobles19','Spencer Lanz', 'Robles','Gustilo','admin',0,'spencerrobles19@gmail.com','spencerr');
+select * from tbl_scan_products;
+update tbl_scan_products set is_scanned =0;
+select * from tbl_product;
+select * from tbl_users;
+Select count(bar_id) from tbl_product where bar_id = '213456789464';
+select * from tbl_product tblp left outer join tbl_scan_products tbls on tblp.bar_id = tbls.bar_id ;
+update tbl_users set points_earned =0;
+truncate table tbl_scan_products;
