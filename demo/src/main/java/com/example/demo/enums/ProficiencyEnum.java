@@ -57,6 +57,5 @@ public enum ProficiencyEnum {
         }
         return list;
     }
-
 }
 
