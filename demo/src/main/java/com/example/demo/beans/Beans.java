@@ -1,4 +1,4 @@
-package com.example.demo.Beans;
+package com.example.demo.beans;
 
 import com.example.demo.services.BarcodesService.BarbecueBarcodeGenerator;
 import com.example.demo.services.BarcodesService.Barcode4jBarcodeGenerator;
