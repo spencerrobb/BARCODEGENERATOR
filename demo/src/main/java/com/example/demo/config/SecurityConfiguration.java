@@ -113,4 +113,9 @@ public class SecurityConfiguration {
 
         return source;
     }
+
+    public String helloWorld(){
+        return "Helloworld";
+    }
+
 }
