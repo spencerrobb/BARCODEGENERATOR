@@ -13,6 +13,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.springframework.http.HttpMethod.*;
@@ -109,25 +110,11 @@ public class SecurityConfiguration {
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
 
-        List<String> allowedOrigins = new ArrayList<>();
-        allowedOrigins.add("http://localhost:8005");
-
-        List<String> allowedMethods = new ArrayList<>();
-        allowedMethods.add("GET");
-        allowedMethods.add("POST");
-        allowedMethods.add("PUT");
-        allowedMethods.add("DELETE");
-
-        List<String> allowedHeaders = new ArrayList<>();
-        allowedHeaders.add("Authorization");
-        allowedHeaders.add("Content-Type");
-
-        configuration.setAllowedOrigins(allowedOrigins);
-        configuration.setAllowedMethods(allowedMethods);
-        configuration.setAllowedHeaders(allowedHeaders);
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:8005"));
+        configuration.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE"));
+        configuration.setAllowedHeaders(Arrays.asList("Authorization","Content-Type"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-
         source.registerCorsConfiguration("/**",configuration);
 
         return source;
@@ -136,5 +123,4 @@ public class SecurityConfiguration {
     public String helloWorld(){
         return "Helloworld";
     }
-
 }
