@@ -14,7 +14,6 @@ import java.awt.image.BufferedImage;
 @Configuration
 public class Beans {
 
-
     @Bean
     public HttpMessageConverter<BufferedImage> createImageHttpMessageConverter() {
         return new BufferedImageHttpMessageConverter();
@@ -39,6 +38,5 @@ public class Beans {
     public ZxingBarcodeGenerator returnZxingBarcodeGenerator(){
         return new ZxingBarcodeGenerator();
     }
-
 
 }

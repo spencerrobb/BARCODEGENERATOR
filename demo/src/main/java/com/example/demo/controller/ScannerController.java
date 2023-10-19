@@ -15,7 +15,7 @@ public class ScannerController {
     private ScanService scanService;
 
     @PostMapping("/scanProduct")
-    public String scanProduct(@RequestParam String barid, @RequestParam String userid){
+    public String scanProduct(@RequestParam String barid, @RequestParam long userid){
        return scanService.scanProduct(barid, userid);
     }
 }

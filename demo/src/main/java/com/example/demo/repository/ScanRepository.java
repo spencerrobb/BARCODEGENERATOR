@@ -12,6 +12,6 @@ public interface ScanRepository extends JpaRepository<ScannedProd, String > {
     @Query(
             value="Select count(*) from tbl_scan_products where bar_id = ?1 AND user_id =?2 AND is_scanned=1",
             nativeQuery = true)
-    public Integer checkIfAlreadyScanned(String barid, String userid);
+    public Integer checkIfAlreadyScanned(String barid, long userid);
 
 }

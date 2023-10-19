@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.example.demo.enums.RoleEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,44 +24,57 @@ import java.util.Date;
 public class User implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    private String userId;
+    private long userId;
+
     @Column(name = "First_Name",nullable = false)
     private String firstName;
+
     @Column(name = "Middle_Name",nullable = false)
     private String middleName;
+
     @Column(name = "Last_Name",nullable = false)
     private String lastName;
-    @Column(name = "User_Name",nullable = false)
-    private String username;
+
     @Column(name = "User_Email",nullable = false)
     private String email;
+
     @Column(name = "Pswd",nullable = false)
     private String password;
+
     @Column(name = "Points_Earned",nullable = false)
     private double pointsEarned;
+
     @Column(name= "Role",nullable = false)
-    private String role;
+    private RoleEnum role;
+
     @Column(name="For_Approval",nullable = false)
     private String forAproval;
+
     @CreationTimestamp
     @Column(updatable = false, name = "created_at")
     private Date createdAt;
+
     @UpdateTimestamp
     @Column(name = "updated_at")
     private Date updatedAt;
+
     @Column(nullable = false)
     private String fullName;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return List.of();
     }
 
     @Override
     public String getPassword() {
         return password;
+    }
+
+    public void setRole(RoleEnum roleEnum){
+        this.role = roleEnum;
     }
 
     public User setFullName(String fullName){

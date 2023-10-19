@@ -20,7 +20,7 @@ public class ScannedProd {
     @Column(name = "Bar_id")
     String barid;
     @Column(name = "User_id")
-    String userid;
+    long userid;
     @Column(name = "is_Scanned")
     int isScanned;
 

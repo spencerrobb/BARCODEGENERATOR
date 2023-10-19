@@ -4,6 +4,7 @@ import com.example.demo.entity.Product;
 import com.example.demo.model.requestModel.PurchaseRequest;
 import com.example.demo.services.ProductService.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +17,8 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping("/save")
-    public Product registerProduct(@RequestBody Product newProduct){
-        return productService.registerProduct(newProduct);
+    public ResponseEntity<Product> registerProduct(@RequestBody Product newProduct){
+        return ResponseEntity.ok(productService.registerProduct(newProduct));
     }
 
 //    @PostMapping("/buy")
@@ -26,23 +27,23 @@ public class ProductController {
 //    }
 
     @PostMapping("/buy")
-    public Product buyProduct(@RequestBody PurchaseRequest purchaseRequest) throws Exception{
-        return productService.purchase(purchaseRequest);
+    public ResponseEntity<Product> buyProduct(@RequestBody PurchaseRequest purchaseRequest) throws Exception{
+        return ResponseEntity.ok(productService.purchase(purchaseRequest));
     }
 
     @PostMapping("/addStock")
-    public Product addStock(@RequestParam String barid, @RequestParam int itemCount) throws Exception{
-        return productService.addStock(barid, itemCount);
+    public ResponseEntity<Product> addStock(@RequestParam String barid, @RequestParam int itemCount) throws Exception{
+        return ResponseEntity.ok(productService.addStock(barid, itemCount));
     }
 
     @GetMapping("/viewProduct/{barid}")
-    public Product getProduct(@PathVariable String barid) throws Exception {
-        return productService.viewProduct(barid);
+    public ResponseEntity<Product> getProduct(@PathVariable String barid) throws Exception {
+        return ResponseEntity.ok(productService.viewProduct(barid));
     }
 
     @GetMapping("/getListOfProducts")
-    public List<Product> getAll() throws Exception {
-        return productService.getAllProduct();
+    public ResponseEntity<List<Product>> getAll() throws Exception {
+        return ResponseEntity.ok(productService.getAllProduct());
     }
 
 }

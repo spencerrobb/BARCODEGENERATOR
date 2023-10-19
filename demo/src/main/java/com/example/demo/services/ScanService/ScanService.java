@@ -20,7 +20,7 @@ public class ScanService {
     @Autowired
     private ProductRepository productRepository;
 
-    public String scanProduct(String barid, String userid) {
+    public String scanProduct(String barid, long userid) {
 
         String response;
         String removeCheckSum =  removeLastCharacter(barid);
@@ -49,7 +49,6 @@ public class ScanService {
         }
         return response;
     }
-
 
     public static String removeLastCharacter(String str) {
         String result = null;

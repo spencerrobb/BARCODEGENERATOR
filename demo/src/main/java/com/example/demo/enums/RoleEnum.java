@@ -2,10 +2,9 @@ package com.example.demo.enums;
 
 public enum RoleEnum {
 
-    BACKEND(" Backend","Backend"),
-    REACT(" React","React"),
-    MOBILEANDROID(" Android","Mobile-Android"),
-    MOBILEIOS(" Ios","Mobile-IOS");
+    USER("User","User"),
+    ADMIN("Admin","Admin"),
+    MANAGER("Manager","Mobile-Manager");
 
     private String key;
     private String dscp;

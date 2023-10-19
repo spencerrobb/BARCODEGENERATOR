@@ -13,11 +13,11 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ResponseStatus
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorMessage> throwException(Exception exception, WebRequest request){
-        ErrorMessage message = new ErrorMessage(HttpStatus.NOT_FOUND, exception.getMessage());
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
-    }
+//    @ExceptionHandler(Exception.class)
+//    public ResponseEntity<ErrorMessage> throwException(Exception exception, WebRequest request){
+//        ErrorMessage message = new ErrorMessage(HttpStatus.NOT_FOUND, exception.getMessage());
+//        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
+//    }
 
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<ErrorMessage> productNotFoundException(ProductNotFoundException exception, WebRequest request){
