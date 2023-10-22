@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,9 +24,22 @@ public class UserController {
     }
 
     @GetMapping("/me")
-    public ResponseEntity<User> authenticatedUser() {
+    public ResponseEntity<UserDetails> authenticatedUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User currentUser = (User) authentication.getPrincipal();
+//        System.out.println("BEFOREUSER");
+//        User currentUser = (User) authentication.getPrincipal();
+
+        UserDetails currentUser = null;
+        Object principal = authentication.getPrincipal();
+        if (principal instanceof UserDetails) {
+             currentUser = (UserDetails) principal;
+            // Now you can work with currentUser as a User object
+            System.out.println("EMAILLL "+currentUser.getUsername());
+
+        } else {
+            // Handle the case where the principal is not a User object
+            System.out.println("NOT USER");
+        }
 
         return ResponseEntity.ok(currentUser);
     }

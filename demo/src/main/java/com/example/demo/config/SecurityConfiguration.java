@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -33,17 +34,6 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        http.authorizeHttpRequests(auth->{
-//                            auth.anyRequest().authenticated();
-//                        });
-//        http.sessionManagement(session-> {
-//            session.sessionCreationPolicy(STATELESS);
-//        });
-        http.csrf(csrf->csrf.disable());
-        return http.build();
-    }
-    @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
 
@@ -57,9 +47,38 @@ public class SecurityConfiguration {
         return source;
     }
 
-    public String helloWorld(){
-        return "Helloworld";
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests(authorizeRequests ->
+                        authorizeRequests
+                                .requestMatchers(new AntPathRequestMatcher("/auth/**")).permitAll() // Permit access to /auth/**     (Authication Controller The request URL path matching /auth/signup and /auth/login doesn't require authentication.)
+                                .anyRequest().authenticated()
+                )
+                .sessionManagement(sessionManagement ->
+                        sessionManagement
+                                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
+                .csrf(csrf -> csrf.disable())
+                .authenticationProvider(authenticationProvider) // Replace with your authentication provider
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class); // Replace with your JWT authentication filter
+
+        return http.build();
     }
+
+
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http.authorizeHttpRequests(auth->{
+//                            auth.anyRequest().authenticated();
+//                        });
+//        http.sessionManagement(session-> {
+//            session.sessionCreationPolicy(STATELESS);
+//        });
+//        http.csrf(csrf->csrf.disable());
+//        return http.build();
+//    }
 
 //    @Bean
 //    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
