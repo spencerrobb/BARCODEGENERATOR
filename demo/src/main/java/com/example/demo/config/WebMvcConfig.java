@@ -12,6 +12,9 @@ import java.util.List;
 @Configuration
 @EnableWebMvc
 public class WebMvcConfig{
+
+    // this class should implements WebMvcConfigurer if your gonna override addCorsMappings(CorsRegistry registry) from the interface
+
 //    @Override
 //    public void addCorsMappings(CorsRegistry registry) {
 //        registry.addMapping("/**")
