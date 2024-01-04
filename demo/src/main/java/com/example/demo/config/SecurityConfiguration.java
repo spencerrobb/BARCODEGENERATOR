@@ -3,15 +3,19 @@ package com.example.demo.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import static org.springframework.http.HttpMethod.*;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
@@ -21,7 +25,8 @@ import java.util.List;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfiguration {
+public class SecurityConfiguration  {
+
     private final AuthenticationProvider authenticationProvider;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
@@ -33,20 +38,37 @@ public class SecurityConfiguration {
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
     }
 
-    @Bean
-    CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
+//    @Override
+//    public void configure(HttpSecurity http) throws Exception {
+//        // Enable CORS support with custom configuration
+//        http.cors(corsConfigurer -> corsConfigurer
+//                        .configurationSource(corsConfigurationSource())
+//
+//                // Other security configurations...
+//        );
+//    }
 
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:8005"));
-        configuration.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE"));
-        configuration.setAllowedHeaders(Arrays.asList("Authorization","Content-Type"));
+//    @Override
+//    public void addCorsMappings(CorsRegistry registry) {
+//        registry.addMapping("/**")
+//                .allowedOrigins("http://localhost:8005", "http://127.0.0.1:8081")
+//                .allowedMethods("GET", "POST", "PUT", "DELETE")
+//                .allowedHeaders("Authorization", "Content-Type");
+//    }
 
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**",configuration);
-
-        return source;
-    }
-
+//    @Bean
+//    CorsConfigurationSource corsConfigurationSource() {
+//        CorsConfiguration configuration = new CorsConfiguration();
+//
+//        configuration.setAllowedOrigins(Arrays.asList("http://localhost:8005","http://127.0.0.1:8081"));
+//        configuration.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE"));
+//        configuration.setAllowedHeaders(Arrays.asList("Authorization","Content-Type"));
+//
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**",configuration);
+//
+//        return source;
+//    }git
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -60,9 +82,21 @@ public class SecurityConfiguration {
                         sessionManagement
                                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
+                .cors(cors -> {
+                    cors.configurationSource(request -> {
+                        CorsConfiguration corsConfig = new CorsConfiguration();
+                        corsConfig.setAllowedOrigins(Arrays.asList("http://localhost:8081"));
+                        corsConfig.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+                        corsConfig.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
+                        corsConfig.setAllowCredentials(true);
+                        corsConfig.setMaxAge(3600L);
+                        return corsConfig;
+                    });
+                })
                 .csrf(csrf -> csrf.disable())
                 .authenticationProvider(authenticationProvider) // Replace with your authentication provider
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class); // Replace with your JWT authentication filter
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class) // Replace with your JWT authentication filter
+        ;
 
         return http.build();
     }
