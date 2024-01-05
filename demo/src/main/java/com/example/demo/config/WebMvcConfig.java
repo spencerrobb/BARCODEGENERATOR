@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import java.util.List;
 
 @Configuration
-@EnableWebMvc
+//@EnableWebMvc // un-commenting this annotation doesnt make the barcode work
 public class WebMvcConfig{
 
     // this class should implements WebMvcConfigurer if your gonna override addCorsMappings(CorsRegistry registry) from the interface
